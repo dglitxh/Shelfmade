@@ -1,0 +1,47 @@
+body{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.thumbnail{
+    height: 80%;
+}
+
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 2rem;
+    top: 0;
+    left: 0;
+    right: 0;
+   
+    background-color: transparent;
+    transition: background-color 0.5s ease-in;
+  }
+
+  .root a {
+    text-decoration: none;
+  }
+  
+  .logo {
+    font-family: 'Abhaya Libre', serif;
+    font-size: 3rem;
+  }
+  
+  .icon {
+    position: relative;
+    font-size: 2rem;
+  }
+  .icon-num {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    margin-top: -9px;
+    left: 50%;
+    margin-left: -9px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
