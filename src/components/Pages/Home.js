@@ -1,55 +1,33 @@
-
 import { Link } from "react-router-dom"
-import { Cart } from "../Cart/Cart"
-import { Navbar } from "./navigation"
+
 
 const Home = () => {
     return(
         <div>
-   <div class="flex flex-wrap md items-center h-screen">
-      <div class="bg-white w-full md:w-1/2 h-screen">
-        <div class="mx-32">
-          <h1 class="text-6xl font-bold mt-16">Tokyo</h1>
-
-    
-          <div class="flex mt-16 font-light text-gray-500">
-            <div class="pr-4">
-              <span class="uppercase">Country</span>
-              <p class="text-2xl text-gray-900 font-semibold pt-2">Japan</p>
-            </div>
-            <div class="pr-4">
-              <span class="uppercase">Region</span>
-              <p class="text-2xl text-gray-900 font-semibold pt-2">Kanto</p>
-            </div>
-            <div class="pr-4">
-              <span class="uppercase">island</span>
-              <p class="text-2xl text-gray-900 font-semibold pt-2">Honshu</p>
-            </div>
-          </div>
-
-          <div
-            class="description w-full sm: md:w-2/3 mt-16 text-gray-500 text-sm"
-          >
-            Tokyo, Japan’s busy capital, mixes the ultramodern and the
-            traditional, from neon-lit skyscrapers to historic temples. The
-            opulent Meiji Shinto Shrine is known for its towering gate and
-            surrounding woods. The Imperial Palace sits amid large public
-            gardens
-          </div>
-
-          <Link to="/shop" class="uppercase mt-5 text-sm font-semibold hover:underline">
-            read more
-          </Link>
-        </div>
-      </div>
-      <div class="bg-red-600 w-full md:w-1/2 h-screen">
-        <img
-          src="https://source.unsplash.com/7H77FWkK_x4/1600x900"
-          class="h-screen w-full"
-          alt=""
-        />
-      </div>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Cover</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Contact</a>
+      </nav>
     </div>
+  </header>
+
+  <main class="px-3">
+    <h1>Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+    </p>
+  </main>
+
+  <footer class="mt-auto text-white-50">
+    <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+  </footer>
+</div>
 </div>
       
     )

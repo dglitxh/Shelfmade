@@ -1,6 +1,6 @@
 body{
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
 }
 
 .thumbnail{
@@ -43,5 +43,35 @@ body{
     margin-left: -9px;
     font-size: 1rem;
     text-align: center;
+    color: red;
   }
   
+  @media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+    }
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+    
+    .bg-grey {
+    background-color: #eae8e8;
+    }
+
+
+    .hero{
+      background: url('./wp6431019.jpg');
+      background-position: center;
+      height: 100vh;
+      width: 100vh;
+      background-size: cover;
+    }

@@ -4,6 +4,7 @@ export const Cart = () => {
     let  [items, setItems] = useState({})
     let  [totalPrice, settotalPrice] =  useState(0)
     let  [totalItems, settotalItems] = useState(0)
+    let [prod, setProd] = useState({})
   
   
       const addToCart = (item, id, quantity=1) => {
@@ -29,6 +30,38 @@ export const Cart = () => {
           settotalPrice(totalPrice)
           delete this.items[id]
       }
+    
+      const getProduct = (product) => {
+        
+        if(product){
+            setProd(product)
+        }else{
+            console.log('cannot get product')
+        }
+        console.log(product)
+         return prod
+    }
+
+    const changeQunatity = (item, id, num) => {
+        console.log(num)
+        let quant = items[id].quantity
+        let diff = quant - num
+
+        if (num <= 0) return
+
+        if (num < quant){
+            items[id].quantity -= diff
+            totalItems -= diff
+            items[id].price -= (diff * items[id].item.price)
+            totalPrice -= (diff * items[id].item.price)
+            settotalItems(totalItems)
+            settotalPrice(totalPrice)
+            
+        }else if(num > quant){
+            addToCart(item, id)
+        }
+         
+    }
 
     const getItems = () => {
         let cartArr = [];
@@ -38,5 +71,11 @@ export const Cart = () => {
         return cartArr
     }
 
-    return { items, totalItems, totalPrice, addToCart, getItems, removeFromCart}
+    return {changeQunatity, items, totalItems, totalPrice, addToCart, getItems, removeFromCart, getProduct, prod}
 }
+
+
+
+
+
+    
