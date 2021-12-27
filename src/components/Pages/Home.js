@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Home = () => {
     return(
-        <div>
+      <div class="hero h-14 bg-gradient-to-r from-violet-500 to-fuchsia-500">
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
     <div>

@@ -17,9 +17,25 @@ const App = () => {
         <Navbar totalItems={cart.totalItems} />
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/shop" element={<Shop addToCart={cart.addToCart} getProduct={cart.getProduct}/>}/>
-                <Route path="/cart" element={<CartPage changeQuantity={cart.changeQunatity} totalPrice={cart.totalPrice} items={items}/>}/>
-                <Route path="/details" element={<ProductDetail addToCart={cart.addToCart} getProduct={cart.prod}/>}/>
+                <Route 
+                    path="/shop" 
+                    element={<Shop 
+                    addToCart={cart.addToCart} 
+                    getProduct={cart.getProduct}/>}
+                />
+                <Route 
+                    path="/cart" element={<CartPage 
+                    removeFromCart={cart.removeFromCart} 
+                    changeQuantity={cart.changeQunatity} 
+                    totalPrice={cart.totalPrice} 
+                    items={items}/>}
+                />
+                <Route 
+                    path="/details" 
+                    element={<ProductDetail 
+                    addToCart={cart.addToCart} 
+                    getProduct={cart.prod}/>}
+                />
                 </Routes>
         </React.Fragment>
         </BrowserRouter>

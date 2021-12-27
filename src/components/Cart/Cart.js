@@ -8,6 +8,7 @@ export const Cart = () => {
   
   
       const addToCart = (item, id, quantity=1) => {
+          quantity = Number(quantity)
          if (!Object.keys(items).includes(id)) {
              items[id] = {item: item, quantity: 0, price: 0}
          } 
@@ -23,16 +24,16 @@ export const Cart = () => {
         console.log(items)  
       };
   
-      const removeFromCart = (id) => {
+      const removeFromCart = (e, id) => {
           totalItems -= items[id].quantity 
           totalPrice -= items[id].price
           settotalItems(totalItems)
           settotalPrice(totalPrice)
-          delete this.items[id]
+          delete items[id]
+          e.preventDefault()
       }
     
       const getProduct = (product) => {
-        
         if(product){
             setProd(product)
         }else{
@@ -42,14 +43,15 @@ export const Cart = () => {
          return prod
     }
 
-    const changeQunatity = (item, id, num) => {
-        console.log(num)
+    const changeQunatity = (item, id, quantity) => {
+        quantity = Number(quantity)
+        console.log(quantity)
         let quant = items[id].quantity
-        let diff = quant - num
+        let diff = quant - quantity
 
-        if (num <= 0) return
+        if (quantity < 0) return
 
-        if (num < quant){
+        if (quantity < quant){
             items[id].quantity -= diff
             totalItems -= diff
             items[id].price -= (diff * items[id].item.price)
@@ -57,8 +59,20 @@ export const Cart = () => {
             settotalItems(totalItems)
             settotalPrice(totalPrice)
             
-        }else if(num > quant){
-            addToCart(item, id)
+        }else if(quantity > quant){
+            let cartItem = items[id]
+            totalItems -= cartItem.quantity
+            totalPrice -= cartItem.price
+            cartItem.quantity = 0
+            cartItem.price = 0
+            cartItem.quantity = quantity;
+            totalItems += quantity
+            cartItem.price = cartItem.item.price * quantity;
+            totalPrice += cartItem.price
+            settotalItems(totalItems)
+            settotalPrice(totalPrice)
+            setItems(items)
+            console.log(items)
         }
          
     }
@@ -71,7 +85,17 @@ export const Cart = () => {
         return cartArr
     }
 
-    return {changeQunatity, items, totalItems, totalPrice, addToCart, getItems, removeFromCart, getProduct, prod}
+    return {
+            changeQunatity,
+            items, 
+            totalItems, 
+            totalPrice, 
+            addToCart, 
+            getItems, 
+            removeFromCart, 
+            getProduct, 
+            prod
+        }
 }
 
 
