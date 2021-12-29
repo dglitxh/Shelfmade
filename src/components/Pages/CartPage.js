@@ -55,12 +55,12 @@ const CartPage = (props) => {
             </td>
             <td class="hidden text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
-                ${listItem.item.price}
+              GH₵ {listItem.item.price}
               </span>
             </td>
             <td class="text-right">
               <span class="text-sm lg:text-base font-medium">
-                ${listItem.price}
+              GH₵ {listItem.price}
               </span>
             </td>
           </tr>
@@ -93,7 +93,7 @@ const CartPage = (props) => {
                     Total
                   </div>
                   <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                   ${totalPrice}
+                  GH₵ {totalPrice}
                   </div>
                 </div>
               <a href="#">

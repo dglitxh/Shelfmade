@@ -1,34 +1,5 @@
-body{
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
 
-.thumbnail{
-    height: 80%;
-}
 
-.root {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 2rem;
-    top: 0;
-    left: 0;
-    right: 0;
-   
-    background-color: transparent;
-    transition: background-color 0.5s ease-in;
-  }
-
-  .root a {
-    text-decoration: none;
-  }
-  
-  .logo {
-    font-family: 'Abhaya Libre', serif;
-    font-size: 3rem;
-  }
-  
   .icon {
     position: relative;
     font-size: 2rem;
@@ -71,7 +42,7 @@ body{
     .hero{
       background: url('./wp6431019.jpg');
       background-position: center;
-      height: 100vh;
-      width: 100vh;
       background-size: cover;
+      width: 100vw;
+      height: 100vh;
     }

@@ -41,7 +41,7 @@ export const products = [
    "title": "Old Skuul Vans Rainbow",
    "price": 150,
    "thumbnail": "https://di2ponv0v5otw.cloudfront.net/posts/2019/09/10/5d785421969d1f7d190d4820/m_5d78543215281299cf77e63e.jpg"
-},
+}
     ]
     
     
