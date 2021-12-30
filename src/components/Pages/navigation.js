@@ -6,7 +6,7 @@ import { BsBag } from 'react-icons/bs';
 export const Navbar = (props) =>{
     const {totalItems} = props
     return(
-      <nav class="bg-white shadow dark:bg-gray-800">
+      <nav class="bg-white shadow-sm dark:bg-gray-300">
     <div class="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
       <div class="flex items-center justify-between">
         <div>

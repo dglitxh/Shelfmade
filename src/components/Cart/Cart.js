@@ -20,6 +20,9 @@ export const Cart = () => {
         settotalItems(totalItems)
         settotalPrice(totalPrice)
         setItems(items) 
+        localStorage.setItem('cart', JSON.stringify(items))
+        let it = localStorage.getItem('cart')
+        console.log(JSON.parse(it))
       };
   
       const removeFromCart = (e, id) => {
