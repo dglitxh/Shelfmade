@@ -1,18 +1,19 @@
 import React from "react";
 import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
+import getAll from "./components/Firebase/firebase";
 import CartPage from './components/Pages/CartPage'
 import Home from './components/Pages/Home'
 import { Navbar } from "./components/Pages/navigation";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Shop from "./components/Pages/Shop";
-import getAll from "./components/Firebase/firebase"
+
 
 
 const App = () => {
     const cart = Cart()
     const items = cart.getItems()
-    console.log("it's lit", getAll())
+    console.log(getAll())
     return (
         <BrowserRouter>
         <React.Fragment>

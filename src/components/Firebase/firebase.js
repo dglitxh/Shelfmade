@@ -1,34 +1,43 @@
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
-import 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
+import { collection, getDocs } from  'firebase/firestore'
 
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_ID,
-    measurementId: process.env.REACT_APP_MEASUREMENT_ID
-};
+
+    apiKey: "AIzaSyBzPaEp5agYxrUMKXr9_Dy5GgIgA0v7-xY",
+  
+    authDomain: "shelfmade-a39e4.firebaseapp.com",
+  
+    projectId: "shelfmade-a39e4",
+  
+    storageBucket: "shelfmade-a39e4.appspot.com",
+  
+    messagingSenderId: "590021488249",
+  
+    appId: "1:590021488249:web:34c31224e0ca9c86c2eea8",
+  
+    measurementId: "G-T1WKK61GR5"
+  
+  };
+  
+  
 
 
 const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
-export const db = app.firestore()
+export const db = getFirestore()
 
 const getAll = async () => {
-    const snapshot = db.collection('production').get()
-        return snapshot.docs.map((doc) => {
-            return{
-                id: doc.id,
-                ...doc.data()
-            }
-        })
+    const querySnapshot = await getDocs(collection(db, "Products"));
+    querySnapshot.forEach((doc) => {
+    
+    const items = JSON.stringify(doc.data())
+    
+     return (JSON.parse(items));
+});
     
 }
 
 export default getAll
-console.log("it's lit")
-console.log(getAll())
