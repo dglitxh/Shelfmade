@@ -11,9 +11,24 @@ const firebaseConfig = {
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_ID,
     measurementId: process.env.REACT_APP_MEASUREMENT_ID
-    };
+};
 
 
 const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
 export const db = app.firestore()
+
+const getAll = async () => {
+    const snapshot = db.collection('production').get()
+        return snapshot.docs.map((doc) => {
+            return{
+                id: doc.id,
+                ...doc.data()
+            }
+        })
+    
+}
+
+export default getAll
+console.log("it's lit")
+console.log(getAll())
