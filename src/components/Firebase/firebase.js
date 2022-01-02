@@ -33,7 +33,6 @@ const getAll = async () => {
     const items = []
     const querySnapshot = await getDocs(collection(db, "Products"));
     querySnapshot.forEach((doc) => {
-
     const item = doc.data()
     item['id'] = doc.id
     items.push(item)

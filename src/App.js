@@ -13,7 +13,6 @@ import Shop from "./components/Pages/Shop";
 const App = () => {
     const cart = Cart()
     const items = cart.getItems()
-    console.log(getAll())
     return (
         <BrowserRouter>
         <React.Fragment>

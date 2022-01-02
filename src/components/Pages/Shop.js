@@ -1,10 +1,26 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { products } from "../Products/Products"
+import { collection, getDocs } from  'firebase/firestore'
+import { db } from  '../Firebase/firebase'
 
 
 const Shop = (props) => {
+    const [products, setProducts] = useState([])
         const { addToCart, getProduct } = props
-        
+
+    useEffect(async () => {
+                const items = []
+                const querySnapshot = await getDocs(collection(db, "Products"));
+                querySnapshot.forEach((doc) => {
+                const item = doc.data()
+                item['id'] = doc.id
+                items.push(item)
+            });
+                console.log(items)
+               setProducts(items)
+    }
+        );
     return (
         <div>
         <div className="p-2 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10 items-start ">
@@ -12,7 +28,7 @@ const Shop = (props) => {
             return(
             <section key={product.id} className="p-5 py-12 text-center transform duration-500 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
                 <Link to="/details" onClick={() => {getProduct(product)}}>
-                <img  className="thumbnail" src={product.thumbnail} alt=""/>
+                <img  className="thumbnail" src={product.product_img} alt=""/>
                 </Link>
                 <h2 className="font-semibold mb-2 mt-12 text-cyan-600">Popular Collection</h2>
                 <h1 className="text-2xl mb-5 h-16">{product.title}</h1>
