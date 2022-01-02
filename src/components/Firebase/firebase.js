@@ -33,19 +33,11 @@ const getAll = async () => {
     const items = []
     const querySnapshot = await getDocs(collection(db, "Products"));
     querySnapshot.forEach((doc) => {
-<<<<<<< Updated upstream
+
     const item = doc.data()
     item['id'] = doc.id
     items.push(item)
-=======
-    
-    const item = {
-      "id": doc.id,
-      ...JSON.stringify(doc.data())
-    }
-    items.push(item)
 
->>>>>>> Stashed changes
 });
     console.log(items)
     return (items);
