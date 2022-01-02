@@ -63,9 +63,6 @@ const Home = () => {
                 </p>
             </article>
         </section>
-        <p class="text-xs text-center text-gray-400 mt-10">
-            Made by YDzzy
-        </p>
     </section>
   </div>
       
