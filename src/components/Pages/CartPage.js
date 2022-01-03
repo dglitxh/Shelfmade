@@ -45,12 +45,15 @@ const CartPage = (props) => {
              
             </td>
             <td class="justify-center md:justify-end md:flex mt-6">
-              <div class="w-20 h-10">
-                <div class="relative flex flex-row w-full h-8">
-                <input onChange={(e) => {changeQuantity(listItem, listItem.item.id, e.target.value)}} type="number" defaultValue={listItem.quantity} 
-                  class="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
+            <div class="flex items-center">
+            <button onClick={changeQuantity} class="text-gray-500 focus:outline-none focus:text-gray-600">
+                 <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </button>
+                <span class="text-gray-700 mx-2">{listItem.quantity}</span>
+                <button onClick={() => changeQuantity(listItem.item, listItem.item.id, 1)} class="text-gray-500 focus:outline-none focus:text-gray-600">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </button>
+               </div>
             </td>
             <td class="hidden text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
