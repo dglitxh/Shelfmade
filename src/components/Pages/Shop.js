@@ -17,7 +17,7 @@ const Shop = (props) => {
                 item['id'] = doc.id
                 items.push(item)
             });
-                console.log(items)
+        
                setProducts(items)
     }
         );

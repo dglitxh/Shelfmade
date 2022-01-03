@@ -26,10 +26,8 @@ export const Cart = () => {
       };
   
       const removeFromCart = (e, id) => {
-          totalItems -= items[id].quantity 
-          totalPrice -= items[id].price
-          settotalItems(totalItems)
-          settotalPrice(totalPrice)
+          settotalItems(totalItems -= items[id].quantity)
+          settotalPrice(totalPrice -= items[id].price)
           delete items[id]
           e.preventDefault()
       }
@@ -44,37 +42,57 @@ export const Cart = () => {
          return prod
     }
 
-    const changeQunatity = (item, id, quantity) => {
-        quantity = Number(quantity)
-        console.log(quantity)
-        let quant = items[id].quantity
-        let diff = quant - quantity
-
-        if (quantity <= 0) return
-
-        if (quantity < quant){
-            items[id].quantity -= diff
-            totalItems -= diff
-            items[id].price -= (diff * items[id].item.price)
-            totalPrice -= (diff * items[id].item.price)
-            settotalItems(totalItems)
-            settotalPrice(totalPrice)
-            
-        }else if(quantity > quant){
-            let cartItem = items[id]
-            totalItems -= cartItem.quantity
-            totalPrice -= cartItem.price
-            cartItem.quantity = 0
-            cartItem.price = 0
-            cartItem.quantity = quantity;
-            totalItems += quantity
-            cartItem.price = cartItem.item.price * quantity;
-            totalPrice += cartItem.price
-            settotalItems(totalItems)
-            settotalPrice(totalPrice)
+    const changeQunatity = (id, action) => {
+        const quant = items[id].quantity
+       
+        if (action === "subtract" && quant > 1){
+            items[id].quantity -= 1
+            items[id].price -= items[id].item.price
             setItems(items)
-            console.log(items)
+            settotalItems(totalItems -= 1)
+            settotalPrice(totalPrice -= items[id].item.price)
         }
+
+        else if (action === "add" && quant > 0){
+            console.log("added")
+            items[id].quantity += 1
+            items[id].price += items[id].item.price
+            setItems(items)
+            settotalItems(totalItems += 1)
+            settotalPrice(totalPrice += items[id].item.price)
+        }
+
+        // quantity = Number(quantity)
+        // console.log(quantity)
+        // let quant = items[id].quantity
+        // let diff = quant - quantity
+
+        // if (quantity <= 0) return
+
+        // if (quantity < quant){
+        //     items[id].quantity -= diff
+        //     totalItems -= diff
+        //     items[id].price -= (diff * items[id].item.price)
+        //     totalPrice -= (diff * items[id].item.price)
+        //     settotalItems(totalItems)
+        //     settotalPrice(totalPrice)
+            
+        // }else if(quantity >= quant){
+        //     addToCart(item, id)
+        //     // let cartItem = items[id]
+        //     // totalItems -= cartItem.quantity
+        //     // totalPrice -= cartItem.price
+        //     // cartItem.quantity = 0
+        //     // cartItem.price = 0
+        //     // cartItem.quantity = quantity;
+        //     // totalItems += quantity
+        //     // cartItem.price = cartItem.item.price * quantity;
+        //     // totalPrice += cartItem.price
+        //     // settotalItems(totalItems)
+        //     // settotalPrice(totalPrice)
+        //     // setItems(items)
+        //     console.log(items)
+        // }
          
     }
 
