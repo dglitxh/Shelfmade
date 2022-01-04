@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
 import CartPage from './components/Pages/CartPage'
 import Home from './components/Pages/Home'
+import Login from "./components/Pages/login";
 import { Navbar } from "./components/Pages/navigation";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Shop from "./components/Pages/Shop";
@@ -22,6 +23,11 @@ const App = () => {
                     element={<Shop 
                     addToCart={cart.addToCart} 
                     getProduct={cart.getProduct}/>}
+                />
+                <Route 
+                    path="/login" 
+                    element={<Login 
+                    />}
                 />
                 <Route 
                     path="/cart" element={<CartPage 
