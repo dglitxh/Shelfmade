@@ -8,6 +8,7 @@ import Login from "./components/Pages/Login";
 import { Navbar } from "./components/Pages/navigation";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Shop from "./components/Pages/Shop";
+import Signup from "./components/Pages/Signup"
 
 
 
@@ -30,6 +31,11 @@ const App = () => {
                 <Route 
                     path="/login" 
                     element={<Login
+                   />}
+                />
+                <Route 
+                    path="/signup" 
+                    element={<Signup
                    />}
                 />
                 <Route 

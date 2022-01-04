@@ -31,7 +31,7 @@ const CartPage = (props) => {
           <tr>
             <td class="hidden pb-4 md:table-cell">
               <Link to='/details'>
-                <img src={listItem.item['thumbnail']} class="w-20 rounded" alt="Thumbnail"/>
+                <img src={listItem.item.product_img} class="w-20 rounded" alt="Thumbnail"/>
               </Link>
             </td>
             <td>

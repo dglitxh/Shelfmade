@@ -25,10 +25,10 @@ export const Navbar = (props) =>{
     
       <div className="items-center md:flex">
         <div className="flex flex-col md:flex-row md:mx-6">
-          <Link to="/" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Home</Link>
-          <Link to="/shop"className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Shop</Link>
-          <Link to="/login" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">login</Link>
-           <Link to="/" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Sign up</Link>
+          <Link to="/" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0">Home</Link>
+          <Link to="/shop"className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >Shop</Link>
+          <Link to="/login" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >login</Link>
+           <Link to="/signup" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >Sign up</Link>
          </div>
          
           
