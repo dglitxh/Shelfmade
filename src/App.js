@@ -7,6 +7,7 @@ import Login from ".,/components/Pages/login";
 import { Navbar } from "./components/Pages/navigation";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Shop from "./components/Pages/Shop";
+import Signup from "./components/Pages/Signup";
 
 
 const App = () => {
@@ -27,6 +28,11 @@ const App = () => {
                 <Route 
                     path="/login" 
                     element={<Login 
+                    />}
+                />
+                <Route 
+                    path="/login" 
+                    element={<Signup
                     />}
                 />
                 <Route 
