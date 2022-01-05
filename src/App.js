@@ -3,11 +3,13 @@ import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
 import CartPage from './components/Pages/CartPage'
 import Home from './components/Pages/Home'
-import Login from ".,/components/Pages/login";
+import Login from "./components/Pages/Login";
 import { Navbar } from "./components/Pages/navigation";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Shop from "./components/Pages/Shop";
-import Signup from "./components/Pages/Signup";
+import Signup from "./components/Pages/Signup"
+
+
 
 
 const App = () => {
@@ -27,13 +29,13 @@ const App = () => {
                 />
                 <Route 
                     path="/login" 
-                    element={<Login 
-                    />}
+                    element={<Login
+                   />}
                 />
                 <Route 
-                    path="/login" 
+                    path="/signup" 
                     element={<Signup
-                    />}
+                   />}
                 />
                 <Route 
                     path="/cart" element={<CartPage 
