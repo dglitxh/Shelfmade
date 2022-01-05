@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
-import getAll from "./components/Firebase/firebase";
 import CartPage from './components/Pages/CartPage'
 import Home from './components/Pages/Home'
 import Login from "./components/Pages/Login";
