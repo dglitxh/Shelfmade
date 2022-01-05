@@ -1,10 +1,16 @@
 import { useState } from "react";
 
 export const Cart = () => {
-    let  [items, setItems] = useState({})
+    const  [items, setItems] = useState({})
     let  [totalPrice, settotalPrice] =  useState(0)
     let  [totalItems, settotalItems] = useState(0)
-    let [prod, setProd] = useState({})
+    const [prod, setProd] = useState({})
+
+
+    let ls_items = localStorage.getItem('cart')
+    let parsed_ls_items = JSON.parse(ls_items)
+
+
   
       const addToCart = (item, id, quantity=1) => {
           quantity = Number(quantity)
@@ -14,21 +20,23 @@ export const Cart = () => {
 
         let cartItem = items[id]
         cartItem.quantity += quantity;
-        totalItems += quantity
+        settotalItems(totalItems += quantity)
         cartItem.price = cartItem.item.price * cartItem.quantity;
-        totalPrice += cartItem.item.price
-        settotalItems(totalItems)
-        settotalPrice(totalPrice)
+        settotalPrice(totalPrice += cartItem.item.price)
         setItems(items) 
         localStorage.setItem('cart', JSON.stringify(items))
-        let it = localStorage.getItem('cart')
-        console.log(JSON.parse(it))
+        localStorage.setItem("total price", JSON.stringify(totalPrice))
+        localStorage.setItem("total items", JSON.stringify(totalItems))
+         
       };
   
       const removeFromCart = (e, id) => {
           settotalItems(totalItems -= items[id].quantity)
           settotalPrice(totalPrice -= items[id].price)
           delete items[id]
+          localStorage.setItem("total price",JSON.stringify(totalPrice))
+          localStorage.setItem("total items", JSON.stringify(totalItems))
+          localStorage.setItem("cart", JSON.stringify(items))
           e.preventDefault()
       }
     
@@ -61,45 +69,18 @@ export const Cart = () => {
             settotalItems(totalItems += 1)
             settotalPrice(totalPrice += items[id].item.price)
         }
-
-        // quantity = Number(quantity)
-        // console.log(quantity)
-        // let quant = items[id].quantity
-        // let diff = quant - quantity
-
-        // if (quantity <= 0) return
-
-        // if (quantity < quant){
-        //     items[id].quantity -= diff
-        //     totalItems -= diff
-        //     items[id].price -= (diff * items[id].item.price)
-        //     totalPrice -= (diff * items[id].item.price)
-        //     settotalItems(totalItems)
-        //     settotalPrice(totalPrice)
-            
-        // }else if(quantity >= quant){
-        //     addToCart(item, id)
-        //     // let cartItem = items[id]
-        //     // totalItems -= cartItem.quantity
-        //     // totalPrice -= cartItem.price
-        //     // cartItem.quantity = 0
-        //     // cartItem.price = 0
-        //     // cartItem.quantity = quantity;
-        //     // totalItems += quantity
-        //     // cartItem.price = cartItem.item.price * quantity;
-        //     // totalPrice += cartItem.price
-        //     // settotalItems(totalItems)
-        //     // settotalPrice(totalPrice)
-        //     // setItems(items)
-        //     console.log(items)
-        // }
+        localStorage.setItem("total price",JSON.stringify(totalPrice))
+        localStorage.setItem("total items", JSON.stringify(totalItems))
+        localStorage.setItem("cart", JSON.stringify(items))
          
     }
 
     const getItems = () => {
         let cartArr = [];
-        for (let id in items){
-            cartArr.push(items[id]);
+        let pls = parsed_ls_items
+        console.log(pls)
+        for (let id in pls){
+            cartArr.push(pls[id]);
         }
         return cartArr
     }

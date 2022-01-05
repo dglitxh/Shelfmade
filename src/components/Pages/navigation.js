@@ -1,9 +1,15 @@
 import {Link, NavLink} from 'react-router-dom'
-import React from 'react';
+import React, { useState } from 'react';
 import { BsBag } from 'react-icons/bs';
 
 
 export const Navbar = (props) =>{
+  const [isNav, setIsNav] = useState(true)
+
+  const toggleNav = () => {
+    if (!isNav) setIsNav(true)
+    else setIsNav(false)
+  }
     const {totalItems} = props
     return(
       <nav className="bg-white shadow-sm dark:bg-gray-300">
@@ -14,7 +20,7 @@ export const Navbar = (props) =>{
         </div>
 
         <div className="flex md:hidden">
-          <button type="button" className="text-gray-500 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+          <button onClick={toggleNav} type="button" className="text-gray-500 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
             <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
               <path fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
             </svg>
@@ -22,7 +28,7 @@ export const Navbar = (props) =>{
         </div>
       </div>
 
-    
+      {isNav?
       <div className="items-center md:flex">
         <div className="flex flex-col md:flex-row md:mx-6">
           <Link to="/" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0">Home</Link>
@@ -41,6 +47,7 @@ export const Navbar = (props) =>{
         </Link>
         </div>
       </div>
+       :<></>}
     </div>
   </nav>
     )
