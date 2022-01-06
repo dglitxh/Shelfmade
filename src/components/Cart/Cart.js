@@ -17,7 +17,7 @@ export const Cart = () => {
         console.log("third", items)
     }
 
-    
+    // add cart items to local storage
     const addToLocalStorage = () => {
         localStorage.setItem("total price",JSON.stringify(totalPrice))
         localStorage.setItem("total items", JSON.stringify(totalItems))
@@ -57,7 +57,7 @@ export const Cart = () => {
         }else{
             console.log('cannot get product')
         }
-        console.log(product)
+        console.log("getProduct",product)
          return prod
     }
 
@@ -91,7 +91,7 @@ export const Cart = () => {
         for (let id in cart_items){
             cartArr.push(cart_items[id])
         }
-       console.log("get items",cartArr)
+        console.log("get items",cartArr)
         return cartArr
     }
 

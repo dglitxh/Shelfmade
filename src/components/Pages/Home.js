@@ -63,12 +63,9 @@ const Home = () => {
                 </p>
             </article>
         </section>
-<<<<<<< HEAD
-=======
         <p className="text-xs text-center text-gray-400 mt-10">
             Made by YDzzy
         </p>
->>>>>>> firebase
     </section>
   </div>
       

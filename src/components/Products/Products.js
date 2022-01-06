@@ -20,17 +20,6 @@ export const products = [
     "thumbnail": "https://www.prodirectbasketball.com/productimages/V3_1_Main/240883_Main_Thumb_0920723.jpg"
     },
     {
-<<<<<<< HEAD
-    "id": uniqid(),
-    "title": "Nike Air Jordan 6",
-    "price": 100,
-    "thumbnail": "https://i.pinimg.com/originals/54/ff/9d/54ff9d12be915e3ad76c48f0636ab7ec.jpg"
-    },{
-    "id": uniqid(),
-    "title": "Nike Kyrie 7",
-    "price": 250,
-    "thumbnail": "https://ph-test-11.slatic.net/p/5d4b4c3d3f5de1040b669f05ac132675.jpg"
-=======
             "id": uniqid(),
             "title": "Nike Air Jordan 6",
             "price": 100,
@@ -41,7 +30,6 @@ export const products = [
                 "title": "Nike Kyrie 7",
                 "price": 250,
                 "thumbnail": "https://ph-test-11.slatic.net/p/5d4b4c3d3f5de1040b669f05ac132675.jpg"
->>>>>>> firebase
     },
     {
      "id": uniqid(),
