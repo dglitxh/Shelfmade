@@ -1,18 +1,23 @@
 import { Link } from 'react-router-dom'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
+import { login } from '../../Redux/userSlice';
+import { useSelector, useDisptch } from 'react-redux';
 
 
 
 const Signup = () => {
-    const [ user, setUser] = useState('')
+    const user = useSelector((state) => state.user.value)
+    const dispatch = useDisptch()
     const [ email, setEmail ]  = useState('')
+    const [ name, setName] = useState('')
     const [password, setPassword ] = useState('')
     const [password_2, setPassword_2] = useState('')
 
   
     const createAccount = (e) => {
         e.preventDefault()
+        if (password.length < 8) alert("Password must be more than 8 characters")
         if (password === password_2){
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
@@ -51,6 +56,7 @@ const Signup = () => {
                                     type="text" 
                                     placeholder="Full name"
                                     name='name'
+                                    required={true}
                                     onChange={(e) => {
                                         setName(e.target.value)
                                     }}/>
@@ -61,6 +67,7 @@ const Signup = () => {
                                     type="email" 
                                     placeholder="mike@gmail.com"
                                     name='email'
+                                    required={true}
                                     onChange={(e) => {
                                         setEmail(e.target.value)
                                     }}/>
@@ -76,6 +83,7 @@ const Signup = () => {
                                 type="password" 
                                 placeholder="Enter your password"
                                 name='password'
+                                required={true}
                                 onChange={(e) => {
                                     setPassword(e.target.value)
                                 }}/>
@@ -90,6 +98,7 @@ const Signup = () => {
                                 type="password" 
                                 placeholder="Re-enter your password"
                                 name='password_2'
+                                required={true}
                                 onChange={(e) => {
                                     setPassword_2(e.target.value)
                                 }}/>
