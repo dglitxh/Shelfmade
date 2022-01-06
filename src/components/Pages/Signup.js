@@ -42,12 +42,23 @@ const Signup = () => {
                 <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
                     <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Sign Up</h2>
+                    
                     <div class="mt-12">
-                        <form onSubmit={() => {createAccount()}}>
+                        <form onSubmit={createAccount}>
+                        <div>
+                                <div class="text-sm font-bold text-gray-700 tracking-wide">Your Name</div>
+                                <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" 
+                                    type="text" 
+                                    placeholder="Full name"
+                                    name='name'
+                                    onChange={(e) => {
+                                        setName(e.target.value)
+                                    }}/>
+                            </div>
                             <div>
                                 <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
                                 <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" 
-                                    type="" 
+                                    type="email" 
                                     placeholder="mike@gmail.com"
                                     name='email'
                                     onChange={(e) => {

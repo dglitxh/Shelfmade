@@ -13,6 +13,7 @@ const Login = () => {
     // Signed in 
         const user = userCredential.user;
         setUser(user)
+        console.log(user)
         // ...
          })
         .catch((error) => {
