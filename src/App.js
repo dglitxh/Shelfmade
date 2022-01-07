@@ -12,6 +12,7 @@ import Signup from "./components/Pages/Signup"
 
 
 
+
 const App = () => {
     const cart = Cart()
     const items = cart.getItems()
@@ -55,5 +56,6 @@ const App = () => {
         </BrowserRouter>
     )
 }
+
 
 export default App
