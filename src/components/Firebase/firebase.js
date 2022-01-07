@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
 import { getFirestore } from 'firebase/firestore'
-import { collection, getDocs } from  'firebase/firestore'
+
 
 
 const firebaseConfig = {
@@ -29,17 +29,6 @@ const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
 export const db = getFirestore()
 
-const getAll = async () => {
-    const items = []
-    const querySnapshot = await getDocs(collection(db, "Products"));
-    querySnapshot.forEach((doc) => {
-    const item = doc.data()
-    item['id'] = doc.id
-    items.push(item)
 
-});
-    console.log(items)
-    return (items);
-}
 
-export default getAll
+export {app, analytics}

@@ -36,7 +36,7 @@ const Shop = (props) => {
 
     return (
         <div>
-        <div className="container p-3 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-10 items-start ">
+        <div className="container p-3 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-10 items-start ">
         {products.map( (product) => {
             return(
             <section key={product.id} className=" p-2 py-12 text-left transform duration-500 hover:-translate-y-2 hover:shadow-xl cursor-pointer">

@@ -1,8 +1,12 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useState } from "react";
+import { Link } from "react-router-dom"
+import { login } from '../../Redux/userSlice';
+import { useDispatch,  } from 'react-redux';
+
 
 const Login = () => {
-    const [user, setUser] = useState('')    
+    const dispatch = useDispatch()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -12,28 +16,39 @@ const Login = () => {
             .then((userCredential) => {
     // Signed in 
         const user = userCredential.user;
-        setUser(user)
-        console.log(user)
+        console.log("loggedIn", user.uid)
         // ...
          })
         .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(`${errorCode}: ${errorMessage}`)
         });
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                    // Profile updated!
+                    console.log(user.displayName)
+                    dispatch(login({email:user.email, uid:user.uid, displayName:user.displayName}))
+                    // ...
+            } else {
+              // User is signed out
+              // ...
+            }
+          });
         e.preventDefault()
     }
     return(
   
-        <div class="container">
-            <div class="lg:w-1/2 xl:max-w-screen-sm">
-                <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
-                    <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+        <div className="container">
+            <div className="lg:w-1/2 xl:max-w-screen-sm">
+                <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+                    <h2 className="text-center text-4xl text-red-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Log in</h2>
-                    <div class="mt-12">
+                    <div className="mt-12">
                         <form onSubmit={() => {loginUser()}}>
                             <div>
-                                <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                                <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" 
+                                <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
                                     type="email" 
                                     placeholder="mike@gmail.com"
                                     name="email"
@@ -42,19 +57,19 @@ const Login = () => {
                                     }}
                                     />
                             </div>
-                            <div class="mt-8">
-                                <div class="flex justify-between items-center">
-                                    <div class="text-sm font-bold text-gray-700 tracking-wide">
+                            <div className="mt-8">
+                                <div className="flex justify-between items-center">
+                                    <div className="text-sm font-bold text-gray-700 tracking-wide">
                                         Password
                                     </div>
                                     <div>
-                                        <a class="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
+                                        <Link className="text-xs font-display font-semibold text-red-600 hover:text-red-800
                                         cursor-pointer">
                                             Forgot Password?
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
-                                <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" 
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
                                     type="password" 
                                     placeholder="Enter your password"
                                     name="password"
@@ -62,16 +77,16 @@ const Login = () => {
                                         setPassword(e.target.value)
                                     }}/>
                             </div>
-                            <div class="mt-10">
-                                <button onClick={(e) => {loginUser(e)}} class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
-                                font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
+                            <div className="mt-10">
+                                <button onClick={(e) => {loginUser(e)}} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
                                 shadow-lg">
                                     Log In
                                 </button>
                             </div>
                         </form>
-                        <div class="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-                            Don't have an account ? <a class="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</a>
+                        <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
+                            Don't have an account ? <Link to='/login' className="cursor-pointer text-red-600 hover:text-red-800">Sign up</Link>
                         </div>
                     </div>
                 </div>
