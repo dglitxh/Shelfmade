@@ -24,13 +24,11 @@ const Signup = () => {
             // Signed in 
                 const user = userCredential.user
                 console.log('user:', user)
-            // ...
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage)
-            // ..
         });
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -40,15 +38,13 @@ const Signup = () => {
                     // Profile updated!
                     console.log(user.displayName)
                     dispatch(login({email:user.email, uid:user.uid, displayName:user.displayName}))
-                    // ...
+                    
                   }).catch((error) => {
                     // An error occurred
                     console.log(error)
-                    // ...
                   });
             } else {
               // User is signed out
-              // ...
             }
           });
     }else{

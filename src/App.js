@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
 import CartPage from './components/Pages/CartPage'
@@ -8,14 +8,32 @@ import { Navbar } from "./components/Pages/navigation";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Shop from "./components/Pages/Shop";
 import Signup from "./components/Pages/Signup"
+import {login, selectUser} from "./Redux/userSlice"
+import { useDispatch, useSelector} from "react-redux";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 
 
 
 const App = () => {
+    const dispatch = useDispatch()
+    const user = useSelector(selectUser)
     const cart = Cart()
     const items = cart.getItems()
+
+    useEffect( () => {
+        const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log(user.displayName)
+                dispatch(login({email:user.email, uid:user.uid, displayName:user.displayName}))   
+            } else {
+                return
+            }
+        })
+    },[])
+
     return (
         <BrowserRouter>
         <React.Fragment>
