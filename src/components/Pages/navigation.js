@@ -1,16 +1,31 @@
 import {Link, NavLink} from 'react-router-dom'
 import React, { useState } from 'react';
 import { BsBag } from 'react-icons/bs';
+import { getAuth, signOut } from 'firebase/auth';
+import { useDispatch } from "react-redux"
+import { logout} from '../../Redux/userSlice';
 
 
 export const Navbar = (props) =>{
+  const dispatch = useDispatch()
   const [isNav, setIsNav] = useState(true)
+  const {totalItems, user} = props
 
   const toggleNav = () => {
     if (!isNav) setIsNav(true)
     else setIsNav(false)
   }
-    const {totalItems} = props
+
+  const signout = () => {
+    const auth = getAuth();
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        dispatch(logout())
+      }).catch((error) => {
+        // An error happened.
+});
+  }
+   
     return(
       <nav className="bg-white shadow-sm dark:bg-gray-300">
     <div className="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
@@ -33,8 +48,12 @@ export const Navbar = (props) =>{
         <div className="flex flex-col md:flex-row md:mx-6">
           <Link to="/" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0">Home</Link>
           <Link to="/shop"className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >Shop</Link>
-          <Link to="/login" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >login</Link>
-           <Link to="/signup" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >Sign up</Link>
+          {user?
+          <Link to="/" onClick={() => {signout()}} className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >logout</Link>
+            :
+            <Link to="/login" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 dark:hover:text-indigo-400 md:mx-4 md:my-0" >login</Link>
+           }
+          
          </div>
          
           
