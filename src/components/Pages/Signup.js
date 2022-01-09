@@ -38,7 +38,7 @@ const Signup = () => {
                     // Profile updated!
                     console.log(user.displayName)
                     dispatch(login({email:user.email, uid:user.uid, displayName:user.displayName}))
-                    
+                    window.location.reload()
                   }).catch((error) => {
                     // An error occurred
                     console.log(error)

@@ -20,7 +20,9 @@ export const Navbar = (props) =>{
     const auth = getAuth();
       signOut(auth).then(() => {
         // Sign-out successful.
+        console.log("logged out")
         dispatch(logout())
+        window.location.reload()
       }).catch((error) => {
         // An error happened.
 });
