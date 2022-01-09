@@ -29,6 +29,7 @@ const Login = () => {
                     // Profile updated!
                     console.log(user.displayName)
                     dispatch(login({email:user.email, uid:user.uid, displayName:user.displayName}))
+                    window.location.reload()
                     // ...
             } else {
               // User is signed out
@@ -63,7 +64,7 @@ const Login = () => {
                                         Password
                                     </div>
                                     <div>
-                                        <Link className="text-xs font-display font-semibold text-red-600 hover:text-red-800
+                                        <Link to='/' className="text-xs font-display font-semibold text-red-600 hover:text-red-800
                                         cursor-pointer">
                                             Forgot Password?
                                         </Link>
@@ -86,7 +87,7 @@ const Login = () => {
                             </div>
                         </form>
                         <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-                            Don't have an account ? <Link to='/login' className="cursor-pointer text-red-600 hover:text-red-800">Sign up</Link>
+                            Don't have an account ? <Link to='/signup' className="cursor-pointer text-red-600 hover:text-red-800">Sign up</Link>
                         </div>
                     </div>
                 </div>

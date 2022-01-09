@@ -8,7 +8,7 @@ import { db } from  '../Firebase/firebase'
 const Shop = (props) => {
     const [products, setProducts] = useState([])
     const { addToCart, getProduct } = props
-
+    console.log(products)
     useEffect(() => {
        
             async function getData(){
@@ -32,7 +32,7 @@ const Shop = (props) => {
             }getData()
             
     },[]);
-
+    
 
     return (
         <div>
@@ -47,7 +47,7 @@ const Shop = (props) => {
                 <h2 className="font-semibold mb-2 mt-8 text-cyan-600">Popular Collection</h2>
                 <h1 className="text-2xl mb-5 h-6">{product.title}</h1>
                 <h2 className="font-semibold mb-3">GH₵ {product.price}</h2>
-                <button className="mb-9" id="add-to-cart" onClick={() => {addToCart(product, product.id)}} className="p-2 px-6 bg-red-500 text-white rounded-md hover:bg-red-600">Add To Cart</button>
+                <button id="add-to-cart" onClick={() => {addToCart(product, product.id)}} className="p-2 px-6 bg-red-500 mb-9 text-white rounded-md hover:bg-red-600">Add To Cart</button>
                 </div>
             </section>
             )
