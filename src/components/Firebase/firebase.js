@@ -6,23 +6,23 @@ import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyBzPaEp5agYxrUMKXr9_Dy5GgIgA0v7-xY",
+    apiKey: process.env.REACT_APP_API_KEY,
   
-    authDomain: "shelfmade-a39e4.firebaseapp.com",
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   
-    projectId: "shelfmade-a39e4",
+    projectId: process.env.REACT_APP_PROJECT_ID,
   
-    storageBucket: "shelfmade-a39e4.appspot.com",
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   
-    messagingSenderId: "590021488249",
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   
-    appId: "1:590021488249:web:34c31224e0ca9c86c2eea8",
+    appId: process.env.REACT_APP_ID,
   
-    measurementId: "G-T1WKK61GR5"
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID 
   
   };
   
-  
+
 
 
 const app = initializeApp(firebaseConfig)
