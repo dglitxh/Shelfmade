@@ -12,6 +12,7 @@ import {login, selectUser} from "./Redux/userSlice"
 import { useDispatch, useSelector} from "react-redux";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+
 const App = () => {
     const dispatch = useDispatch()
     const user = useSelector(selectUser)

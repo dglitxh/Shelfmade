@@ -58,7 +58,7 @@ const Signup = () => {
         <div>
            <div className="container">
             <div className="lg:w-1/2 xl:max-w-screen-sm">
-                <div className="mt-10 px-42 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 ">
+                <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-48 lg:mt-16 2xl:px-24 ">
                     <h2 className="text-center text-4xl text-red-600 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Sign Up</h2>
                     

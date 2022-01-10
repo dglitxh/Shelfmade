@@ -22,13 +22,9 @@ const firebaseConfig = {
   
   };
   
-
-
-
-const app = initializeApp(firebaseConfig)
-const analytics = getAnalytics(app)
+export const app = initializeApp(firebaseConfig)
+export const analytics = getAnalytics(app)
 export const db = getFirestore()
 
 
 
-export {app, analytics}
