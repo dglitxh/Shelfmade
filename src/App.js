@@ -16,9 +16,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 const App = () => {
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
-    setTimeout(()=>{
-        console.log("userSelector", user)
-    }, 5000)
     
     const cart = Cart()
     const items = cart.getItems()
@@ -33,7 +30,7 @@ const App = () => {
                 return
             }
         })
-    },[])
+    },[dispatch])
 
     return (
         <BrowserRouter>
