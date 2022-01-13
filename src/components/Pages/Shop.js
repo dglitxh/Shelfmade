@@ -4,6 +4,7 @@ import { collection, getDocs } from  'firebase/firestore'
 import { db } from  '../Firebase/firebase'
 
 
+
 const Shop = (props) => {
     const [products, setProducts] = useState([])
     const { addToCart, getProduct } = props
@@ -35,6 +36,8 @@ const Shop = (props) => {
 
     return (
         <div>
+            <h2 className="text-center text-4xl text-red-500 my-3 font-display font-semibold lg:text-left xl:text-5xl
+                    xl:text-bold">Product Catalog</h2>
         <div className="container p-3 md:p-0 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-10 items-start ">
         {products.map( (product) => {
             return(
@@ -44,9 +47,9 @@ const Shop = (props) => {
                 </Link>
                 <div className="p-3">
                 <h2 className="font-semibold mb-2 mt-2 text-cyan-600">Popular Collection</h2>
-                <h1 className="xl:text-2xl mb-3 h-6">{product.title}</h1>
+                <h1 className="xl:text-2xl mb-3 ">{product.title}</h1>
                 <h2 className="font-semibold mb-3">GH₵ {product.price}</h2>
-                <button id="add-to-cart" onClick={() => {addToCart(product, product.id)}} className="p-2 px-6 bg-red-500 mb-9 text-white rounded-md hover:bg-red-600">Add To Cart</button>
+                <button id="add-to-cart" onClick={() => {addToCart(product, product.id)}} className="p-2 px-6 bg-red-500 mb-9 text-white rounded-md hover:bg-red-600">Add to cart</button>
                 </div>
             </section>
             )
