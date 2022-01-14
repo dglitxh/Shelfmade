@@ -65,7 +65,7 @@ const App = () => {
                     path="/details" 
                     element={<ProductDetail 
                     addToCart={cart.addToCart} 
-                    getProduct={cart.prod}/>}
+                    getProduct={cart.selectedProduct}/>}
                 />
                 </Routes>
         </React.Fragment>

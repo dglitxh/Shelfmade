@@ -4,10 +4,11 @@ export const Cart = () => {
     const cart = JSON.parse(localStorage.getItem('cart'))
     const cart_total = Number(localStorage.getItem('total price'))
     const cart_items = Number(localStorage.getItem('total items'))
+    const selected_product = JSON.parse(localStorage.getItem('product'))
     const [items, setItems] = useState(cart? cart: {})
     let  [totalPrice, settotalPrice] =  useState(cart_total? cart_total: 0)
     let  [totalItems, settotalItems] = useState(cart_items? cart_items: 0)
-    const [prod, setProd] = useState({})
+    const [ selectedProduct, setSelectedProduct] = useState(selected_product? selected_product: 0)
 
     // get cart items from local storage
     const getLsItems = () => {
@@ -53,12 +54,13 @@ export const Cart = () => {
     
       const getProduct = (product) => {
         if(product){
-            setProd(product)
+            setSelectedProduct(product)
+            localStorage.setItem('product', JSON.stringify(product))
         }else{
             console.log('cannot get product')
         }
         console.log("getProduct",product)
-         return prod
+         return selectedProduct
     }
 
     const changeQunatity = (id, action) => {
@@ -104,7 +106,7 @@ export const Cart = () => {
             getItems, 
             removeFromCart, 
             getProduct, 
-            prod
+            selectedProduct
         }
 }
 
