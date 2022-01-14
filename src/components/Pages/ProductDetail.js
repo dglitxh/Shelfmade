@@ -1,10 +1,10 @@
-import { useState } from "react/cjs/react.development"
+import { useState } from "react"
 
 
 
 
 const ProductDetail = (props) => {
-  let [quantity, setQuantity] = useState('')
+  let [quantity, setQuantity] = useState(0)
   const {addToCart, getProduct} = props
 
   const handleChange = (e) => {
