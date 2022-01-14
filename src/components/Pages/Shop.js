@@ -42,7 +42,7 @@ const Shop = (props) => {
         {products.map( (product) => {
             return(
             <section key={product.id} className=" p-2 py-12 text-left transform duration-500 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
-                <Link to="/details" onClick={() => {getProduct(product)}}>
+                <Link to="/details" onClick={getProduct(product)}>
                 <img  className="thumbnail" src={product.product_img} alt=""/>
                 </Link>
                 <div className="p-3">
