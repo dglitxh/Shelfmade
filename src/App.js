@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Router, Routes, Route, HashRouter  } from "react-router-dom";
+import { Routes, Route, HashRouter  } from "react-router-dom";
 import { Cart } from "./components/Cart/Cart";
 import CartPage from './components/Pages/CartPage'
 import Home from './components/Pages/Home'

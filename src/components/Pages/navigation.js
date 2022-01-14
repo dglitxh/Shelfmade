@@ -89,8 +89,8 @@ export const Navbar = (props) =>{
                 }
             </div>
             :
-            <Link to="/login" className="my-1 text-lg text-gray-700 dark:text-gray-500 hover:text-red-500 
-            dark:hover:text-red-400 md:mx-4 md:my-0" >login</Link>
+            <Link to="/login" className="my-1 text-bold text-lg text-gray-700 dark:text-gray-500 hover:text-red-500 
+            dark:hover:text-red-400 md:mx-4 md:my-0" >Login</Link>
            
             
           }
