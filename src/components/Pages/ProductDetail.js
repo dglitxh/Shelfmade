@@ -9,6 +9,7 @@ const ProductDetail = (props) => {
 
   const handleChange = (e) => {
     quantity = e.target.value
+    if (quantity < 0) return
     setQuantity(Number(quantity))
   }
 

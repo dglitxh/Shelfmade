@@ -26,6 +26,7 @@ export const Cart = () => {
         }
 
       const addToCart = (item, id, quantity=1) => {
+        
         quantity = Number(quantity)
          if (!Object.keys(items).includes(id)) {
              console.log('t/f', Object.keys(items))
@@ -35,7 +36,7 @@ export const Cart = () => {
         items[id].quantity += quantity;
         settotalItems(totalItems += quantity)
         items[id].price = items[id].item.price * items[id].quantity;
-        settotalPrice(totalPrice += items[id].item.price)
+        settotalPrice(totalPrice += items[id].item.price * quantity)
         addToLocalStorage()
         getLsItems()
          
