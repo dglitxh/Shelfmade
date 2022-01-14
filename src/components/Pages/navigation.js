@@ -67,7 +67,7 @@ export const Navbar = (props) =>{
                   text-lg font-large dark:text-red-500 text-gray-500 hover:bg-gray-50 
                   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" 
                   id="menu-button"> 
-                    {user.displayName.split()[0]}
+                    {user.displayName.split(' ')[0]}
                   <svg className="-mr-1 ml-1 h-5 w-5 cursor:pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" 
                   aria-hidden="true">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4
@@ -88,10 +88,9 @@ export const Navbar = (props) =>{
                   <></>
                 }
             </div>
-            
             :
-            <Link to="/login" className="my-1 text-gray-700 dark:text-gray-500 hover:text-red-500 
-            dark:hover:text-indigo-400 md:mx-4 md:my-0" >login</Link>
+            <Link to="/login" className="my-1 text-lg text-gray-700 dark:text-gray-500 hover:text-red-500 
+            dark:hover:text-red-400 md:mx-4 md:my-0" >login</Link>
            
             
           }

@@ -23,6 +23,9 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(`${errorCode}: ${errorMessage}`)
+        if (errorCode === 'auth/wrong-password' || errorCode === "auth/user-not-found"){
+            alert('Wrong email or password')
+        }
         });
         onAuthStateChanged(auth, (user) => {
             if (user) {
