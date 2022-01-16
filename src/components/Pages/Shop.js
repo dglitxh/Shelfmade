@@ -20,8 +20,8 @@ const Shop = (props) => {
                     item['id'] = doc.id
                     items.push(item)
                     console.log(item)
-                   
                     });
+                    
                     if (items.length > 0) {localStorage.setItem("products", JSON.stringify(items))}
                     let getFromLs = localStorage.getItem('products')
                     setProducts(JSON.parse(getFromLs))

@@ -25,6 +25,8 @@ export const Cart = () => {
         localStorage.setItem("cart", JSON.stringify(items))
         }
 
+
+        // Add items to cart
       const addToCart = (item, id, quantity=1) => {
         
         quantity = Number(quantity)
@@ -43,7 +45,7 @@ export const Cart = () => {
       };
 
      
-  
+//   Remove items from cart
       const removeFromCart = (e, id) => {
           settotalItems(totalItems -= items[id].quantity)
           settotalPrice(totalPrice -= items[id].price)
@@ -53,6 +55,8 @@ export const Cart = () => {
           e.preventDefault()
       }
     
+
+    //   get a single product from cart to display
       const getProduct = (product) => {
         if(product){
             setSelectedProduct(product)
@@ -64,6 +68,7 @@ export const Cart = () => {
          return selectedProduct
     }
 
+    // handles changes  in cart item quantities
     const changeQunatity = (id, action) => {
         const quant = items[id].quantity
        
@@ -87,6 +92,7 @@ export const Cart = () => {
         getLsItems()
     }
 
+    // create an array of all items in cart object
     const getItems = () => {
         let cartArr = [];
         const get_cart = localStorage.getItem('cart')
