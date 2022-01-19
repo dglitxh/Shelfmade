@@ -11,6 +11,7 @@ import Signup from "./components/Pages/Signup"
 import {login, selectUser} from "./Redux/userSlice"
 import { useDispatch, useSelector} from "react-redux";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import ForgotPwd from "./components/Pages/ForgotPwd";
 
 
 const App = () => {
@@ -67,6 +68,10 @@ const App = () => {
                     addToCart={cart.addToCart} 
                     getProduct={cart.selectedProduct}/>}
                 />
+                <Route
+                    path="/forgot_pwd"
+                    element={<ForgotPwd/>}
+                    />
                 </Routes>
         </React.Fragment>
         </HashRouter>

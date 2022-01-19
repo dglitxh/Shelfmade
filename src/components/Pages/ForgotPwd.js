@@ -14,7 +14,7 @@ const ForgotPwd = () => {
                         xl:text-bold">Forgot Password</h2>
                         
                         <div className="mt-12">
-                            <form onSubmit={}>
+                            <form onSubmit={() => console.log('i want to change my pwd')}>
                             <div>
                                     <div className="text-sm font-bold text-gray-700 tracking-wide">Your Name</div>
                                     <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
@@ -28,7 +28,7 @@ const ForgotPwd = () => {
                                 </div>
                                 
                                 <div className="mt-10">
-                                    <button onClick={(e) => {console.log(e)} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                    <button onClick={(e) => {console.log(e)}} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                     font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
                                     shadow-lg">
                                         Signup
@@ -41,7 +41,7 @@ const ForgotPwd = () => {
                 </div> 
            </div>
         ) 
-    
+
 }
 
 
