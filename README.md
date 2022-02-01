@@ -1,3 +1,3 @@
-A frontend e-commerce app made with React, redux and firebase.
+An e-commerce app made with React, Redux and Firebase.
 
 site: https://shelfmade.netlify.app
