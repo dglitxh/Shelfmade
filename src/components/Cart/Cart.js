@@ -30,7 +30,7 @@ export const Cart = () => {
       const addToCart = (item, id, quantity=1) => {
         
         quantity = Number(quantity)
-         if (!Object.keys(items).includes(id)) {
+         if (!items[id]) {
              console.log('t/f', Object.keys(items))
              items[id] = {item: item, quantity: 0, price: 0}
          } 
