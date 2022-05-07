@@ -14,7 +14,7 @@ const Login = () => {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-    // Signed in 
+    // Signed in
         const user = userCredential.user;
         console.log("loggedIn", user.uid)
         // ...
@@ -42,7 +42,7 @@ const Login = () => {
         e.preventDefault()
     }
     return(
-  
+
         <div className="container">
             <div className="lg:w-1/2 xl:max-w-screen-sm">
                 <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
@@ -52,8 +52,8 @@ const Login = () => {
                         <form onSubmit={() => {loginUser()}}>
                             <div>
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
-                                    type="email" 
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500"
+                                    type="email"
                                     placeholder="mike@gmail.com"
                                     name="email"
                                     onChange={(e) => {
@@ -67,14 +67,14 @@ const Login = () => {
                                         Password
                                     </div>
                                     <div>
-                                        <Link to='/forgot_pwd' className="text-xs font-display font-semibold text-red-600 hover:text-red-800
+                                        <Link to='/forgot' className="text-xs font-display font-semibold text-red-600 hover:text-red-800
                                         cursor-pointer">
                                             Forgot Password?
                                         </Link>
                                     </div>
                                 </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
-                                    type="password" 
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500"
+                                    type="password"
                                     placeholder="Enter your password"
                                     name="password"
                                     onChange={(e) => {
