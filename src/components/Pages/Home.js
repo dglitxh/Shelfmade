@@ -11,9 +11,9 @@ const Home = () => {
       </div>
       <div className="col-lg-6">
         <h1 className="display-5 fw-bold lh-1 mb-3">Shelfmade Online Retail Store</h1>
-        <p className="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, 
-        the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, 
-        responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <p className="lead mb-4">We are the best online sneaker store out on the market
+        at this very moment. We sell only the best and authentic products which are purchased
+        directly from their respective factories. We offer great discounts and have the best return policy and prices</p>
         <Link to='/shop' className="d-grid gap-2 d-md-flex justify-content-md-start">
           <button type="button" className="btn btn-outline-secondary btn-lg px-4">Start shopping</button>
         </Link>
@@ -65,7 +65,7 @@ const Home = () => {
         </section>
     </section>
   </div>
-      
+
     )
 }
 
