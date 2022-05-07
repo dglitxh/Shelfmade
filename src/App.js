@@ -17,7 +17,7 @@ import ForgotPwd from "./components/Pages/ForgotPwd";
 const App = () => {
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
-    
+
     const cart = Cart()
     const items = cart.getItems()
 
@@ -26,7 +26,7 @@ const App = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 console.log(user.displayName)
-                dispatch(login({email:user.email, uid:user.uid, displayName:user.displayName}))   
+                dispatch(login({email:user.email, uid:user.uid, displayName:user.displayName}))
             } else {
                 return
             }
@@ -39,37 +39,37 @@ const App = () => {
         <Navbar totalItems={cart.totalItems} user={user} />
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route 
-                    path="/shop" 
-                    element={<Shop 
-                    addToCart={cart.addToCart} 
+                <Route
+                    path="/shop"
+                    element={<Shop
+                    addToCart={cart.addToCart}
                     getProduct={cart.getProduct}/>}
                 />
-                <Route 
-                    path="/login" 
+                <Route
+                    path="/login"
                     element={<Login
                    />}
                 />
-                <Route 
-                    path="/signup" 
+                <Route
+                    path="/signup"
                     element={<Signup
                    />}
                 />
-                <Route 
-                    path="/cart" element={<CartPage 
-                    removeFromCart={cart.removeFromCart} 
-                    changeQuantity={cart.changeQunatity} 
-                    totalPrice={cart.totalPrice} 
+                <Route
+                    path="/cart" element={<CartPage
+                    removeFromCart={cart.removeFromCart}
+                    changeQuantity={cart.changeQunatity}
+                    totalPrice={cart.totalPrice}
                     items={items}/>}
                 />
-                <Route 
-                    path="/details" 
-                    element={<ProductDetail 
-                    addToCart={cart.addToCart} 
+                <Route
+                    path="/details"
+                    element={<ProductDetail
+                    addToCart={cart.addToCart}
                     getProduct={cart.selectedProduct}/>}
                 />
                 <Route
-                    path="/forgot_pwd"
+                    path="/forgot"
                     element={<ForgotPwd/>}
                     />
                 </Routes>
