@@ -10,7 +10,7 @@ import { Cart } from "./components/Cart/Cart";
 import { Navbar } from "./components/Pages/navigation";
 import {login, selectUser} from "./Redux/userSlice"
 import { useDispatch, useSelector} from "react-redux";
-import { Routes, Route, HashRouter  } from "react-router-dom";
+import { Routes, Route, HashRouter, Navigate  } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
@@ -21,6 +21,7 @@ const App = () => {
 
     const cart = Cart()
     const items = cart.getItems()
+
 
     useEffect( () => {
         const auth = getAuth()
@@ -48,12 +49,11 @@ const App = () => {
                 />
                 <Route
                     path="/login"
-                    element={  <Login/>  }
+                    element={!user ? <Login/> : <Navigate to={"/cart"} replace/>}
                 />
                 <Route
                     path="/signup"
-                    element={<Signup
-                   />}
+                    element={!user ? <Signup/> : <Navigate to={"/cart"} replace/>}
                 />
                 <Route
                     path="/cart" element={<CartPage
