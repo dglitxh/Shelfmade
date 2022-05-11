@@ -1,6 +1,6 @@
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { login } from '../../Redux/userSlice';
 import { useDispatch,  } from 'react-redux';
 import { Spinner } from '@chakra-ui/react'
@@ -20,7 +20,6 @@ const Login = () => {
     const [alert, setAlert] = useState(false)
     const [err, setErr ] = useState('')
 
-    const navigate = useNavigate()
     const loginUser = (e) => {
         e.preventDefault()
         setLoading(true)
@@ -30,7 +29,6 @@ const Login = () => {
         // Signed in
             const user = userCredential.user;
             setLoading(false)
-            navigate('/cart')
             console.log("loggedIn", user.uid)
         // ...
          })
