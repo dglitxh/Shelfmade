@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
-import { Routes, Route, HashRouter  } from "react-router-dom";
-import { Cart } from "./components/Cart/Cart";
 import CartPage from './components/Pages/CartPage'
 import Home from './components/Pages/Home'
 import Login from "./components/Pages/Login";
-import { Navbar } from "./components/Pages/navigation";
 import ProductDetail from "./components/Pages/ProductDetail";
 import Shop from "./components/Pages/Shop";
 import Signup from "./components/Pages/Signup"
+import ForgotPwd from "./components/Pages/ForgotPwd";
+import { Cart } from "./components/Cart/Cart";
+import { Navbar } from "./components/Pages/navigation";
 import {login, selectUser} from "./Redux/userSlice"
 import { useDispatch, useSelector} from "react-redux";
+import { Routes, Route, HashRouter  } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import ForgotPwd from "./components/Pages/ForgotPwd";
+
 
 
 const App = () => {
@@ -47,8 +48,7 @@ const App = () => {
                 />
                 <Route
                     path="/login"
-                    element={<Login
-                   />}
+                    element={  <Login/>  }
                 />
                 <Route
                     path="/signup"
