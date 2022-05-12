@@ -74,14 +74,14 @@ const CartPage = (props) => {
                </div>
             </td>
             <td className="hidden text-right md:table-cell">
-              <span className="text-sm lg:text-base font-medium">
+              <span className="mb-2 md:ml-4">
               GH₵ {listItem.item.price}
               </span>
             </td>
             <td className="text-right">
-              <span className="text-sm lg:text-base font-medium">
+              <p className="mb-2 md:ml-4">
               GH₵ {listItem.price}
-              </span>
+              </p>
             </td>
           </tr>
         )
@@ -157,7 +157,7 @@ const CartPage = (props) => {
          </AlertDialogContent>
        </AlertDialogOverlay>
      </AlertDialog>
-        </div>
+  </div>
 
     )
 }
