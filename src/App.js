@@ -60,6 +60,7 @@ const App = () => {
                     removeFromCart={cart.removeFromCart}
                     changeQuantity={cart.changeQunatity}
                     totalPrice={cart.totalPrice}
+                    user={user}
                     items={items}/>}
                 />
                 <Route
