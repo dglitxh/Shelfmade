@@ -3,6 +3,13 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile, onAuthStateChan
 import { useState } from 'react';
 import { login } from '../../Redux/userSlice';
 import { useDispatch } from 'react-redux';
+import { Spinner } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 
 
 
@@ -12,22 +19,34 @@ const Signup = () => {
     const [ name, setName] = useState('')
     const [password, setPassword ] = useState('')
     const [password_2, setPassword_2] = useState('')
+    const [alert_, setAlert] = useState(false)
+    const [err, setErr ] = useState('')
+    const [loading, setLoading] = useState(false)
 
-  
+
     const createAccount = (e) => {
         e.preventDefault()
-        if (password.length < 8) alert("Password must be more than 8 characters")
+        setLoading(true)
         if (password === password_2){
+          console.log("passwords do not match")
+          setErr("Your passwords do not match")
+          setLoading(false)
+          setAlert(true)
+        }
         const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)    
+        createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-            // Signed in 
+            // Signed in
+                setLoading(false)
                 const user = userCredential.user
                 console.log('user:', user)
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            setLoading(false)
+            setAlert(true)
+            setErr("There was an error, check your input and try again")
             console.log(errorCode, errorMessage)
         });
         onAuthStateChanged(auth, (user) => {
@@ -47,10 +66,20 @@ const Signup = () => {
               // User is signed out
             }
           });
-    }else{
-        alert("Your passwords do not match")
-    }
-    
+
+    setTimeout(()=>{
+      setAlert(false)
+    }, 8000)
+
+}
+const MyAlert = () => {
+  return(
+    <Alert status='error'>
+      <AlertIcon />
+      <AlertTitle>Authentication failed!</AlertTitle>
+      <AlertDescription>{err}</AlertDescription>
+    </Alert>
+  )
 }
 
 
@@ -61,13 +90,15 @@ const Signup = () => {
                 <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-48 lg:mt-16 2xl:px-24 ">
                     <h2 className="text-center text-4xl text-red-600 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Sign Up</h2>
-                    
+
                     <div className="mt-12">
+                    {alert_ ? <MyAlert/> : <></>}
+                    <br></br>
                         <form onSubmit={createAccount}>
                         <div>
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">Your Name</div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
-                                    type="text" 
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500"
+                                    type="text"
                                     placeholder="Full name"
                                     name='name'
                                     required={true}
@@ -77,8 +108,8 @@ const Signup = () => {
                             </div>
                             <div className='mt-8'>
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
-                                    type="email" 
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500"
+                                    type="email"
                                     placeholder="mike@gmail.com"
                                     name='email'
                                     required={true}
@@ -91,10 +122,10 @@ const Signup = () => {
                                     <div className="text-sm font-bold text-gray-700 tracking-wide">
                                         Password
                                     </div>
-                                    
+
                                 </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
-                                type="password" 
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500"
+                                type="password"
                                 placeholder="Enter your password"
                                 name='password'
                                 required={true}
@@ -108,8 +139,8 @@ const Signup = () => {
                                     </div>
                                     </div>
                                 </div>
-                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500" 
-                                type="password" 
+                                <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500"
+                                type="password"
                                 placeholder="Re-enter your password"
                                 name='password_2'
                                 required={true}
@@ -121,7 +152,7 @@ const Signup = () => {
                                 <button onClick={(e) => {createAccount(e)}} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
                                 shadow-lg">
-                                    Signup
+                                    {loading? <Spinner/> : "Signup"}
                                 </button>
                             </div>
                         </form>
@@ -131,7 +162,7 @@ const Signup = () => {
                     </div>
                 </div>
             </div>
-            </div> 
+            </div>
         </div>
     )
 }
