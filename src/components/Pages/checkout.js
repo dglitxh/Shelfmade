@@ -1,9 +1,8 @@
 import {v4 as uuid} from 'uuid'
+import  PaystackPop  from '@paystack/inline-js'
 export const checkout = (email, price) => {
-  if (!(/^\w@\w.com$/).test(email)){
-    alert("wrong email format")
-    throw("Email format not supported")
-  }
+  console.log(email)
+ 
   let handler = PaystackPop.setup({
     key: "pk_test_a1d509399e526b08ee746fe6c1160670b86f44d4",
     email: email,
@@ -15,10 +14,10 @@ export const checkout = (email, price) => {
       var reference = response.reference;
       alert('Payment complete! Reference: ' + reference);
       // Make an AJAX call to your server with the reference to verify the transaction
-      fetch("https://shelfmade.netlify.app verify_transaction?reference="+response.reference)
+      fetch("https://http://localhost:3000/verify_transaction?reference="+response.reference)
         .then(res=>{
           if (!response.ok) {
-            throw ("Error verification unsuccesful")
+            throw new Error ("Error verification unsuccesful")
           }
           res.json()
         })
