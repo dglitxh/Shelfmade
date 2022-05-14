@@ -1,9 +1,22 @@
 
 import {useState} from 'react'
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 const ForgotPwd = () => {
     const [mail, setMail] = useState('')
 
+    changePwd = () => {
+        const auth = getAuth();
+        const emailAddress = mail
+
+        sendPasswordResetEmail(auth, emailAddress).then(() => {
+          alert("A link to reset your password has been sent to your mail")
+        }).catch((error) => {
+          // An error ocurred
+          // ...
+          alert("There was an error, please try again")
+      });
+    }
     return (
 
             <div>
@@ -27,7 +40,7 @@ const ForgotPwd = () => {
                                 </div>
 
                                 <div className="mt-10">
-                                    <button onClick={(e) => {console.log(e)}} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                    <button onClick={changePwd} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                     font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
                                     shadow-lg">
                                         Signup
