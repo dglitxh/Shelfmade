@@ -15,17 +15,25 @@ const ForgotPwd = () => {
     const [loading, setLoading] = useState(false)
     const [showAlert,  setShowAlert] = useState(false)
     const [alertMsg, setAlertMsg] = useState('')
+    const [alertStatus, setAlertStatus] = useState("")
+    const [alertTitle, setAlertTitle] = useState("")
 
-    changePwd = () => {
+    const changePwd = () => {
+        if (!mail) return
         const auth = getAuth();
         const emailAddress = mail
         setLoading(true)
         sendPasswordResetEmail(auth, emailAddress).then(() => {
+          //Success
+          setAlertStatus('success')
+          setAlertTitle("Sucess!")
+          setAlertMsg("A link to reset your password has been sent to your mail")
           setLoading(false)
           setShowAlert(true)
-          setAlertMsg("A link to reset your password has been sent to your mail")
         }).catch((error) => {
           // An error ocurred
+          setAlertStatus('error')
+          setAlertTitle('Authentication error!')
           setLoading(false)
           setShowAlert(true)
           setAlertMsg("There was an error, please try again")
@@ -37,10 +45,10 @@ const ForgotPwd = () => {
 
     const MyAlert = () => {
       return(
-        <Alert status='error'>
+        <Alert status={alertStatus} variant="left-accent">
           <AlertIcon />
-          <AlertTitle>Authentication failed!</AlertTitle>
-          <AlertDescription>{err}</AlertDescription>
+          <AlertTitle>{alertTitle}</AlertTitle>
+          <AlertDescription>{alertMsg}</AlertDescription>
         </Alert>
       )
     }
@@ -56,23 +64,24 @@ const ForgotPwd = () => {
                         <div className="mt-12">
                         {showAlert ? <MyAlert/> : <></>}
                         <br></br>
-                            <form onSubmit={() => console.log('i want to change my pwd')}>
+                            <form onSubmit={() => changePwd()}>
                             <div>
                                     <div className="text-sm font-bold text-gray-700 tracking-wide">Your Name</div>
                                     <input className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-red-500"
                                         type="email"
                                         placeholder="example@email.com"
-                                        name='email'
+                                        name='mail'
                                         required={true}
-                                        value={mail}
-                                        onChange={mail=>setMail(mail)}/>
+                                        onChange={(e) => {
+                                            setMail(e.target.value)
+                                        }}/>
                                 </div>
 
                                 <div className="mt-10">
-                                    <button onClick={changePwd} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                    <button type="submit" onClick={() => changePwd()} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                     font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
                                     shadow-lg">
-                                        {loading ? <Spinner/> : "Signup"}
+                                        {loading ? <Spinner/> : "Sumbit"}
                                     </button>
                                 </div>
                             </form>
