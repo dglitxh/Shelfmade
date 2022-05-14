@@ -78,7 +78,7 @@ const ForgotPwd = () => {
                                 </div>
 
                                 <div className="mt-10">
-                                    <button type="submit" onClick={() => changePwd()} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                    <button onClick={() => changePwd()} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                     font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
                                     shadow-lg">
                                         {loading ? <Spinner/> : "Sumbit"}
