@@ -1,21 +1,48 @@
 
 import {useState} from 'react'
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { Spinner } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
+
 
 const ForgotPwd = () => {
     const [mail, setMail] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [showAlert,  setShowAlert] = useState(false)
+    const [alertMsg, setAlertMsg] = useState('')
 
     changePwd = () => {
         const auth = getAuth();
         const emailAddress = mail
-
+        setLoading(true)
         sendPasswordResetEmail(auth, emailAddress).then(() => {
-          alert("A link to reset your password has been sent to your mail")
+          setLoading(false)
+          setShowAlert(true)
+          setAlertMsg("A link to reset your password has been sent to your mail")
         }).catch((error) => {
           // An error ocurred
-          // ...
-          alert("There was an error, please try again")
+          setLoading(false)
+          setShowAlert(true)
+          setAlertMsg("There was an error, please try again")
       });
+      setTimeout(() => {
+        setShowAlert(false)
+      }, 8000)
+    }
+
+    const MyAlert = () => {
+      return(
+        <Alert status='error'>
+          <AlertIcon />
+          <AlertTitle>Authentication failed!</AlertTitle>
+          <AlertDescription>{err}</AlertDescription>
+        </Alert>
+      )
     }
     return (
 
@@ -27,6 +54,8 @@ const ForgotPwd = () => {
                         xl:text-bold">Forgot Password</h2>
 
                         <div className="mt-12">
+                        {showAlert ? <MyAlert/> : <></>}
+                        <br></br>
                             <form onSubmit={() => console.log('i want to change my pwd')}>
                             <div>
                                     <div className="text-sm font-bold text-gray-700 tracking-wide">Your Name</div>
@@ -43,7 +72,7 @@ const ForgotPwd = () => {
                                     <button onClick={changePwd} className="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                     font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600
                                     shadow-lg">
-                                        Signup
+                                        {loading ? <Spinner/> : "Signup"}
                                     </button>
                                 </div>
                             </form>
