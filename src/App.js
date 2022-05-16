@@ -60,6 +60,7 @@ const App = () => {
                     removeFromCart={cart.removeFromCart}
                     changeQuantity={cart.changeQunatity}
                     totalPrice={cart.totalPrice}
+                    emptyCart={cart.emptyCart}
                     user={user}
                     items={items}/>}
                 />

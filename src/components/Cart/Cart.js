@@ -28,23 +28,23 @@ export const Cart = () => {
 
         // Add items to cart
       const addToCart = (item, id, quantity=1) => {
-        
+
         quantity = Number(quantity)
          if (!items[id]) {
              console.log('t/f', Object.keys(items))
              items[id] = {item: item, quantity: 0, price: 0}
-         } 
-         
+         }
+
         items[id].quantity += quantity;
         settotalItems(totalItems += quantity)
         items[id].price = items[id].item.price * items[id].quantity;
         settotalPrice(totalPrice += items[id].item.price * quantity)
         addToLocalStorage()
         getLsItems()
-         
+
       };
 
-     
+
 //   Remove items from cart
       const removeFromCart = (e, id) => {
           settotalItems(totalItems -= items[id].quantity)
@@ -54,7 +54,7 @@ export const Cart = () => {
           getLsItems()
           e.preventDefault()
       }
-    
+
 
     //   get a single product from cart to display
       const getProduct = (product) => {
@@ -71,7 +71,7 @@ export const Cart = () => {
     // handles changes  in cart item quantities
     const changeQunatity = (id, action) => {
         const quant = items[id].quantity
-       
+
         if (action === "subtract" && quant > 1){
             items[id].quantity -= 1
             items[id].price -= items[id].item.price
@@ -104,21 +104,23 @@ export const Cart = () => {
         return cartArr
     }
 
+    const emptyCart = () => {
+      localStorage.removeItem('cart')
+      localStorage.removeItem('total items')
+      localStorage.removeItem('total price')
+      window.location.reload()
+    }
+
     return {
             changeQunatity,
-            items, 
-            totalItems, 
-            totalPrice, 
-            addToCart, 
-            getItems, 
-            removeFromCart, 
-            getProduct, 
-            selectedProduct
+            items,
+            totalItems,
+            totalPrice,
+            addToCart,
+            getItems,
+            removeFromCart,
+            getProduct,
+            selectedProduct,
+            emptyCart
         }
 }
-
-
-
-
-
-    

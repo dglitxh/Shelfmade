@@ -1,8 +1,8 @@
 import {v4 as uuid} from 'uuid'
 import  PaystackPop  from '@paystack/inline-js'
-export const checkout = (email, price) => {
+export const checkout = (email, price, emptyCart) => {
   console.log(email)
- 
+
   let handler = PaystackPop.setup({
     key: "pk_test_a1d509399e526b08ee746fe6c1160670b86f44d4",
     email: email,
@@ -17,16 +17,18 @@ export const checkout = (email, price) => {
       fetch("https://http://localhost:3000/verify_transaction?reference="+response.reference)
         .then(res=>{
           if (!response.ok) {
-            throw new Error ("Error verification unsuccesful")
+            throw new Error ("Error: verification unsuccesful")
           }
           res.json()
         })
         .then(data=>console.log(data))
+
+        emptyCart()
     },
     onClose: function() {
       alert('Transaction was not completed, window closed.');
     },
   });
   handler.openIframe();
-  
+
 }
